@@ -17,6 +17,7 @@ You can blur view behind drawer, dialog window and context menu.
 
 How to get it
 --------
+The artifact will be available on Maven Central in few days.
 
 Grab via Maven:
 ```xml
