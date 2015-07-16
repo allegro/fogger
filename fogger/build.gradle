@@ -81,6 +81,8 @@ tasks.withType(JavaCompile) {
 
 nexusStaging {
     packageGroup = "pl.allegro"
+    numberOfRetries = 15
+    delayBetweenRetriesInMillis = 5000
 }
 
 modifyPom {
