@@ -1,5 +1,5 @@
  
-![fog](https://stash.office/projects/MAS/repos/android-blur/browse/example/res/drawable/icon.png?at=2e95cffd43e15feb9651bc9587507e56394b850a&raw "fog")  
+![fog](https://github.com/allegro/fogger/blob/develop/example/src/main/res/drawable/icon.png?raw=true "fog")
 Fogger
 ====================
 
@@ -12,7 +12,7 @@ Features
 --------------------
 You can blur view behind drawer, dialog window and context menu.
 
-![example](https://stash.office/projects/MAS/repos/android-blur/browse/readme/fog-example.gif?at=859b9358da5b852327a392940486d9842d361f75&raw "Example")
+![example](https://github.com/allegro/fogger/blob/develop/readme/fog-example.gif?raw=true "Example")
 
 
 How to get it
@@ -23,12 +23,12 @@ Grab via Maven:
 <dependency>
   <groupId>pl.allegro.android</groupId>
   <artifactId>fogger</artifactId>
-  <version>1.0.0</version>
+  <version>0.9.0-SNAPSHOT</version>
 </dependency>
 ```
 or Gradle:
 ```groovy
-compile 'pl.allegro.android:fogger:1.0.0'
+compile 'pl.allegro.android:fogger:0.9.0-SNAPSHOT'
 ```
 
 Motivation
@@ -82,7 +82,7 @@ The full example:
        
    </pl.allegro.fogger.ui.drawer.DrawerLayoutWithBlurredBackground>
    ```
-Working example of drawer with dynamically blurred background you could find in the [example app](https://stash.office/projects/MAS/repos/android-blur/browse/example)
+Working example of drawer with dynamically blurred background you could find in the [example app](https://github.com/allegro/fogger/tree/develop/example)
 
 Dialog
 -------------------
@@ -106,7 +106,7 @@ public class MyActivity extends Activity {
 ```
 As you can see, it is just one more line of code compare to dialog window with standard background.
 
-Working example of dialog window with blurred background you could find in the [example app](https://stash.office/projects/MAS/repos/android-blur/browse/example)
+Working example of dialog window with blurred background you could find in the [example app](https://github.com/allegro/fogger/tree/develop/example)
 
 Context Menu
 -------------------

@@ -53,6 +53,8 @@ retrolambda {
 
 apply from: "${rootDir}/gradle/fixTestJavaResourcesMissing.gradle"
 
+apply plugin: 'io.codearte.nexus-staging'
+
 dependencies {
     compile 'com.android.support:support-v4:19.0.1'
     compile 'org.apache.commons:commons-lang3:3.3.2'
@@ -75,4 +77,37 @@ dependencies {
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+}
+
+nexusStaging {
+    packageGroup = "pl.allegro"
+}
+
+modifyPom {
+    project {
+        name 'Fogger'
+        description 'Library to blur bacground under commons Android UI components.'
+        url 'https://github.com/allegro/fogger'
+        inceptionYear '2015'
+
+        scm {
+            url 'https://github.com/allegro/fogger'
+            connection 'scm:git@github.com:allegro/fogger.git'
+            developerConnection 'scm:git@github.com:allegro/fogger.git'
+        }
+
+        licenses {
+            license {
+                name 'The Apache Software License, Version 2.0'
+                url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+            }
+        }
+
+        developers {
+            developer {
+                id 'pawelByszewski'
+                name 'Pawel Byszewski'
+            }
+        }
+    }
 }

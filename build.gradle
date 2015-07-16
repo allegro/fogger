@@ -3,20 +3,20 @@
 buildscript {
     repositories {
         jcenter()
+        mavenCentral()
+        maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.2.3'
         classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.0'
         classpath 'me.tatarka:gradle-retrolambda:3.2.0'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.5.1"
     }
 }
 
 allprojects {
     group = 'pl.allegro.android'
-    version = '1.0.0-SNAPSHOT'
+    version = '0.9.0-SNAPSHOT'
 
     repositories {
         mavenLocal()
