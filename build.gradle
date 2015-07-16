@@ -14,6 +14,12 @@ buildscript {
     }
 }
 
+plugins {
+    id "me.tatarka.retrolambda" version "3.1.0"
+    id 'pl.allegro.tech.build.axion-release' version '1.2.4'
+    id "com.bmuschko.nexus" version "2.3.1"
+}
+
 allprojects {
     group = 'pl.allegro.android'
     version = '0.9.0-SNAPSHOT'
