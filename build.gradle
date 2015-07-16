@@ -20,9 +20,15 @@ plugins {
     id "com.bmuschko.nexus" version "2.3.1"
 }
 
+scmVersion {
+    versionCreator 'versionWithBranch'
+}
+
+
+
 allprojects {
-    group = 'pl.allegro.android'
-    version = '0.9.0-SNAPSHOT'
+    group = GROUP
+    version = scmVersion.version
 
     repositories {
         mavenLocal()

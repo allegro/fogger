@@ -8,12 +8,15 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        minSdkVersion 11
+        minSdkVersion 15
         targetSdkVersion 19
         renderscriptTargetApi 19
         renderscriptSupportModeEnabled true
+        versionCode 1
+        versionName project.version
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
