@@ -1,5 +1,5 @@
  
-![fog](https://github.com/allegro/fogger/blob/develop/example/src/main/res/drawable/icon.png?raw=true "fog")
+![fog](https://github.com/allegro/fogger/blob/master/example/src/main/res/drawable/icon.png?raw=true "fog")
 Fogger
 ====================
 
@@ -12,7 +12,7 @@ Features
 --------------------
 You can blur view behind drawer, dialog window and context menu.
 
-![example](https://github.com/allegro/fogger/blob/develop/readme/fog-example.gif?raw=true "Example")
+![example](https://github.com/allegro/fogger/blob/master/readme/fog-example.gif?raw=true "Example")
 
 
 How to get it
@@ -83,7 +83,7 @@ The full example:
        
    </pl.allegro.fogger.ui.drawer.DrawerLayoutWithBlurredBackground>
    ```
-Working example of drawer with dynamically blurred background you could find in the [example app](https://github.com/allegro/fogger/tree/develop/example)
+Working example of drawer with dynamically blurred background you could find in the [example app](https://github.com/allegro/fogger/tree/master/example)
 
 Dialog
 -------------------
