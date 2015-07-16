@@ -1,0 +1,31 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "com.allegrogroup.android.view.counteredittext.sample"
+        minSdkVersion 11
+        targetSdkVersion 19
+        versionCode 1
+        versionName "1.0"
+        renderscriptTargetApi 19
+        renderscriptSupportModeEnabled true
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    compile project(':fogger')
+    compile 'com.jakewharton:butterknife:6.0.0'
+    compile 'com.android.support:support-v4:19.0.1'
+//    compile 'android:renderscript:19.0.1'
+    compile 'com.squareup.dagger:dagger:1.2.2'
+    provided 'com.squareup.dagger:dagger-compiler:1.2.2'
+    provided 'com.google.code.findbugs:jsr305:2.0.3'
+}

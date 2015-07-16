@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2014 the original author or authors.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/main_screen_padding">
+
+        <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fogger_info"
+                android:layout_gravity="center_horizontal"
+                style="@style/BaseStyle"
+                android:textColor="@color/light_blue"/>
+
+        <Switch
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Turn me"
+                android:checked="false"
+                android:layout_gravity="right"
+                style="@style/BaseStyle"/>
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="fill"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                style="@style/BaseStyle">
+
+            <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/parrot"
+                    android:adjustViewBounds="true"
+                    android:layout_marginBottom="@dimen/default_horizontal_margin"
+                    android:layout_gravity="center_horizontal"/>
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="right"
+                    android:gravity="right">
+
+                <CheckBox
+                        android:id="@+id/checkBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="This"
+                        android:checked="true"/>
+
+                <CheckBox
+                        android:id="@+id/checkBox2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="is"/>
+
+                <CheckBox
+                        android:id="@+id/checkBox3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Awesome"
+                        android:checked="true"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="fill"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                style="@style/BaseStyle">
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                <RadioButton
+                        android:id="@+id/radioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mars"
+                        android:checked="true"/>
+
+                <RadioButton
+                        android:id="@+id/radioButton2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mercury"
+                        android:checked="true"/>
+
+                <RadioButton
+                        android:id="@+id/radioButton4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sun"/>
+
+            </LinearLayout>
+
+            <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/kayak"
+                    android:adjustViewBounds="true"
+                    android:layout_marginBottom="@dimen/default_horizontal_margin"
+                    android:layout_gravity="center_horizontal"/>
+
+        </LinearLayout>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/context_menu_hint"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/context_menu_hint_text_size"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/default_horizontal_margin"
+                android:layout_marginBottom="@dimen/context_menu_hint_margin_bottom"
+                android:textColor="@color/light_blue"/>
+
+        <ImageView
+                android:id="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/sup1"
+                android:adjustViewBounds="true"
+                android:layout_marginBottom="@dimen/default_horizontal_margin"
+                android:layout_gravity="center_horizontal"/>
+
+        <Button
+                android:id="@+id/openDrawerButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Devide by 0"
+                android:layout_gravity="center_horizontal"
+                style="@style/BaseStyle"/>
+
+        <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Count up to Infinity"
+                android:layout_gravity="center_horizontal"
+                style="@style/BaseStyle"/>
+
+        <TextView
+                android:id="@+id/loremIpsum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lorem_ipsum"
+                android:layout_gravity="center_horizontal"
+                style="@style/BaseStyle"/>
+
+    </LinearLayout>
+
+</ScrollView>

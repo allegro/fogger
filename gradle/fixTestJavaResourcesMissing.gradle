@@ -1,0 +1,15 @@
+afterEvaluate {
+    def variantNameRegExp = /compile(.+Debug)UnitTestSources/
+    tasks.findAll {
+        it.name ==~ variantNameRegExp
+    }.each {
+        String variantName = (it.name =~ variantNameRegExp)[0][1]
+        String variantSubdirectoryPath = GUtil.toWords(variantName, '/' as char)
+        String variantCopyTaskName = "copyTestJavaResources${variantName}"
+        task "${variantCopyTaskName}" (type: Copy) {
+            from "${projectDir}/src/test/resources"
+            into "${buildDir}/intermediates/classes/test/${variantSubdirectoryPath}"
+        }
+        it.dependsOn(variantCopyTaskName)
+    }
+}

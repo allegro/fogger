@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2014 the original author or authors.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+
+    <dimen name="offer_row_component_image_margin_left">8dp</dimen>
+    <dimen name="offer_row_component_image_margin_right">8dp</dimen>
+    <dimen name="offer_cell_margin">4dp</dimen>
+    <dimen name="offer_cell_padding">8dp</dimen>
+    <dimen name="tab_font_size">12sp</dimen>
+    <dimen name="tab_side_padding">2dp</dimen>
+    <dimen name="sort_dialog_padding">8dp</dimen>
+    <dimen name="default_horizontal_margin">5dp</dimen>
+    <dimen name="drawer_width">240dp</dimen>
+    <dimen name="main_screen_padding">10dp</dimen>
+    <dimen name="context_menu_hint_text_size">18sp</dimen>
+    <dimen name="context_menu_hint_margin_bottom">8dp</dimen>
+    <dimen name="drawer_content_padding">10dp</dimen>
+
+    <integer name="not_transparent">1</integer>
+    <integer name="full_transparent">0</integer>
+    <item name="scale_max" format="float" type="dimen">1.0</item>
+
+</resources>
