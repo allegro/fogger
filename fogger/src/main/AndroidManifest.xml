@@ -16,9 +16,7 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="pl.allegro.fogger"
-          android:versionCode="1"
-          android:versionName="0.0.1">
+          package="pl.allegro.fogger">
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.GET_TASKS" />
