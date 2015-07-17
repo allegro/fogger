@@ -102,14 +102,6 @@ artifacts {
     archives androidJavadocsJar
 }
 
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
-    }
-}
-
 afterEvaluate {
     androidJavadocs.classpath += project.android.libraryVariants.toList().first().javaCompile.classpath
 }
