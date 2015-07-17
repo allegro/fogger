@@ -9,14 +9,12 @@ buildscript {
         classpath 'com.android.tools.build:gradle:1.2.3'
         classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.0'
         classpath 'me.tatarka:gradle-retrolambda:3.2.0'
-        classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.5.1"
     }
 }
 
 plugins {
     id "me.tatarka.retrolambda" version "3.1.0"
     id 'pl.allegro.tech.build.axion-release' version '1.2.4'
-    id "com.bmuschko.nexus" version "2.3.1"
 }
 
 task wrapper(type: Wrapper) {
