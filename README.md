@@ -17,19 +17,18 @@ You can blur view behind drawer, dialog window and context menu.
 
 How to get it
 --------
-The artifact will be available on Maven Central in few days.
-
 Grab via Maven:
 ```xml
 <dependency>
   <groupId>pl.allegro.android</groupId>
   <artifactId>fogger</artifactId>
-  <version>0.9.0-SNAPSHOT</version>
+  <version>0.9.0</version>
+  <type>aar</type>
 </dependency>
 ```
 or Gradle:
 ```groovy
-compile 'pl.allegro.android:fogger:0.9.0-SNAPSHOT'
+compile 'pl.allegro.android:fogger:0.9.0'
 ```
 
 Motivation
