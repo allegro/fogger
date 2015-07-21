@@ -9,6 +9,7 @@ buildscript {
         classpath 'com.android.tools.build:gradle:1.2.3'
         classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.0'
         classpath 'me.tatarka:gradle-retrolambda:3.2.0'
+        classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.5.3"
     }
 }
 
@@ -19,6 +20,12 @@ plugins {
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.4'
+}
+
+apply plugin: 'io.codearte.nexus-staging'
+
+nexusStaging {
+    packageGroup = 'pl.allegro'
 }
 
 allprojects {
