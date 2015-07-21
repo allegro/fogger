@@ -35,7 +35,7 @@ compile 'pl.allegro.android:fogger:0.9.0-SNAPSHOT'
 Motivation
 --------
 All over the internet there are pieces of code that show how to make blur effect on Android. But there is not any
-library that helps you to blur background under mostly used UI items. I want to make it as easy to use as possible so
+library that helps you to blur background under all mostly used UI items. I want to make it as easy to use as possible so
 you do not have to change architecture of you app.
 
 Examples
@@ -136,7 +136,9 @@ public boolean onContextItemSelected(MenuItem item) {
 
 Road Map
 ===================
-At the moment I have no plan for further features, if you have any idea please let me know.
+    * Substitute SafeAsyncTask (from Roboguice) with RxJava
+
+If you have any idea please let me know.
 
 License
 =======
