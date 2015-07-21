@@ -1,5 +1,4 @@
  
-![fog](https://github.com/allegro/fogger/blob/master/example/src/main/res/drawable/icon.png?raw=true "fog")
 Fogger
 ====================
 
@@ -135,7 +134,7 @@ public boolean onContextItemSelected(MenuItem item) {
 
 Road Map
 ===================
-    * Substitute SafeAsyncTask (from Roboguice) with RxJava
+* Substitute SafeAsyncTask (from Roboguice) with RxJava
 
 If you have any idea please let me know.
 
