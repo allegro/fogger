@@ -11,6 +11,11 @@ Features
 --------------------
 You can blur view behind drawer, dialog window and context menu.
 
+<a href="https://play.google.com/store/apps/details?id=pl.allegro.foggerexample">
+  <img alt="Fogger Demo on Google Play"
+         src="http://developer.android.com/images/brand/en_generic_rgb_wo_60.png" />
+</a>
+
 ![example](https://github.com/allegro/fogger/blob/master/readme/fog-example.gif?raw=true "Example")
 
 
