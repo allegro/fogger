@@ -75,6 +75,7 @@ public class DialogWithBlurredBackgroundLauncherTest {
         //then
         View blurLayer = exampleActivity.findViewById(R.id.blurLayer);
         assertThat(blurLayer).isNotNull();
+        assertThat(blurLayer).isNull();
     }
 
     @Test
