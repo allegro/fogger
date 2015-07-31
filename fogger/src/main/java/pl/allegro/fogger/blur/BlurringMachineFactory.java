@@ -19,11 +19,10 @@ package pl.allegro.fogger.blur;
 import android.content.Context;
 import android.graphics.Bitmap;
 
-public class BlurringImageTaskFactory {
+public class BlurringMachineFactory {
 
-    public BlurringImageTask create(Context context, BlurringImageTask.BlurringImageListener blurringImageListener,
-                                    Bitmap bitmapToBlur) {
-        return new BlurringImageTask(context, blurringImageListener, bitmapToBlur);
+    public static BlurringMachine create(Context context) {
+        return new RenderscriptBlurringMachine(context);
     }
 
 }

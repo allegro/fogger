@@ -43,7 +43,7 @@ public class DrawerLayoutWithBlurredBackgroundTest {
         Blur mockedBlur = mock(Blur.class);
         drawerLayoutWithBlurredBackground.blur = mockedBlur;
         Bitmap bitmap = mock(Bitmap.class);
-        given(mockedBlur.fastblur(any(Context.class), any(Bitmap.class), anyInt()))
+        given(mockedBlur.blur(any(Context.class), any(Bitmap.class), anyInt()))
             .willReturn(bitmap);
 
         //when
@@ -51,6 +51,6 @@ public class DrawerLayoutWithBlurredBackgroundTest {
 
         //then
         verify(drawerLayoutWithBlurredBackground.blur)
-                .fastblur(any(Context.class),any(Bitmap.class), anyInt());
+                .blur(any(Context.class), any(Bitmap.class), anyInt());
     }
 }

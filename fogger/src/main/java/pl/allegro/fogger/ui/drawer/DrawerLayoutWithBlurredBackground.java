@@ -25,10 +25,10 @@ import android.util.Log;
 import pl.allegro.fogger.blur.Blur;
 import pl.allegro.fogger.FoggerConfig;
 import pl.allegro.fogger.R;
-import pl.allegro.fogger.blur.BlurringImageTask;
+import pl.allegro.fogger.blur.BlurringImageListener;
 import pl.allegro.fogger.exception.FoggerException;
 
-public class DrawerLayoutWithBlurredBackground extends DrawerLayout implements BlurringImageTask.BlurringImageListener {
+public class DrawerLayoutWithBlurredBackground extends DrawerLayout implements BlurringImageListener {
 
     private static final String TAG = DrawerLayoutWithBlurredBackground.class.getName();
     protected static final int PREINIT_BITMAP_SIZE = 300;
@@ -107,7 +107,7 @@ public class DrawerLayoutWithBlurredBackground extends DrawerLayout implements B
     private void preInitRenderScriptLibraries() {
         Bitmap bitmap = Bitmap.createBitmap(PREINIT_BITMAP_SIZE, PREINIT_BITMAP_SIZE, Bitmap.Config.ALPHA_8);
         blur = blur == null ? new Blur() : blur;
-        Bitmap fastBlurResult = blur.fastblur(getContext(), bitmap, FoggerConfig.getBackgroundBlurRadius());
+        Bitmap fastBlurResult = blur.blur(getContext(), bitmap, FoggerConfig.getBackgroundBlurRadius());
         fastBlurResult.recycle();
     }
 
