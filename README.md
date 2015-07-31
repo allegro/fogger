@@ -2,6 +2,8 @@
 Fogger
 ====================
 
+[![Build Status](https://travis-ci.org/allegro/fogger.svg?branch=feature%2Ftravis)](https://travis-ci.org/allegro/fogger)
+
 Lib to create blurred background under:
 * dialogs
 * drawer

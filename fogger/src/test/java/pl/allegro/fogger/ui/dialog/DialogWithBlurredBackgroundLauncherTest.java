@@ -39,7 +39,6 @@ import pl.allegro.fogger.ui.BlurredBackgroundAdapter;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
-@Config(constants = BuildConfig.class)
 @RunWith(RobolectricGradleTestRunner.class)
 public class DialogWithBlurredBackgroundLauncherTest {
 
