@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.support.annotation.VisibleForTesting;
 import android.util.Log;
 import android.view.View;
 import pl.allegro.fogger.FoggerConfig;
@@ -95,7 +96,7 @@ public class BlurredBackgroundAdapter {
         blur(context, () -> screenShooter.createScreenShot(viewToBlur));
     }
 
-    //visiblefortesting
+    @VisibleForTesting
     protected synchronized void onBlurringFinish(Bitmap blurredImage) {
         if (state == BlurredBackgroundAdapterState.RESETTED) {
             Log.i(TAG, "BlurringAdapter was reseted, so I recycle created bitmap and reset BlurringAdapterState.");
