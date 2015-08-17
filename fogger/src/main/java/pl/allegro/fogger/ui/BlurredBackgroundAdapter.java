@@ -36,7 +36,7 @@ public class BlurredBackgroundAdapter {
 
     private static final String TAG = BlurredBackgroundAdapter.class.getName();
 
-    protected static enum BlurredBackgroundAdapterState {
+    protected enum BlurredBackgroundAdapterState {
         WORKING,
         RESETTED,
         IDLE,
@@ -84,8 +84,8 @@ public class BlurredBackgroundAdapter {
 
     private void blur(Context context, Func0<Bitmap> screenShotProvider) {
         Async.start(screenShotProvider)
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .observeOn(Schedulers.computation())
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
                 .map(screenShot -> BlurringMachineFactory.create(context).blur(screenShot))
                 .subscribe(blurredBitmap -> onBlurringFinish(blurredBitmap));
     }
@@ -95,7 +95,8 @@ public class BlurredBackgroundAdapter {
         blur(context, () -> screenShooter.createScreenShot(viewToBlur));
     }
 
-    private synchronized void onBlurringFinish(Bitmap blurredImage) {
+    //visiblefortesting
+    protected synchronized void onBlurringFinish(Bitmap blurredImage) {
         if (state == BlurredBackgroundAdapterState.RESETTED) {
             Log.i(TAG, "BlurringAdapter was reseted, so I recycle created bitmap and reset BlurringAdapterState.");
             blurredImage.recycle();

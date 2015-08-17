@@ -22,10 +22,11 @@ import android.graphics.Bitmap;
 import android.support.v4.widget.DrawerLayout;
 import android.util.AttributeSet;
 import android.util.Log;
-import pl.allegro.fogger.blur.Blur;
 import pl.allegro.fogger.FoggerConfig;
 import pl.allegro.fogger.R;
 import pl.allegro.fogger.blur.BlurringImageListener;
+import pl.allegro.fogger.blur.BlurringMachine;
+import pl.allegro.fogger.blur.BlurringMachineFactory;
 import pl.allegro.fogger.exception.FoggerException;
 
 public class DrawerLayoutWithBlurredBackground extends DrawerLayout implements BlurringImageListener {
@@ -33,10 +34,11 @@ public class DrawerLayoutWithBlurredBackground extends DrawerLayout implements B
     private static final String TAG = DrawerLayoutWithBlurredBackground.class.getName();
     protected static final int PREINIT_BITMAP_SIZE = 300;
 
+    //visible for testing
+    BlurringMachine blurringMachine;
     private DrawerBackgroundAdapter drawerBackgroundAdapter;
     private ObligatoryDrawerListener obligatoryDrawerListener;
     private DrawerBackgroundView drawerBackgroundView;
-    protected Blur blur;
 
     public DrawerLayoutWithBlurredBackground(Context context) {
         super(context);
@@ -106,8 +108,8 @@ public class DrawerLayoutWithBlurredBackground extends DrawerLayout implements B
 
     private void preInitRenderScriptLibraries() {
         Bitmap bitmap = Bitmap.createBitmap(PREINIT_BITMAP_SIZE, PREINIT_BITMAP_SIZE, Bitmap.Config.ALPHA_8);
-        blur = blur == null ? new Blur() : blur;
-        Bitmap fastBlurResult = blur.blur(getContext(), bitmap, FoggerConfig.getBackgroundBlurRadius());
+        blurringMachine = blurringMachine == null ? BlurringMachineFactory.create(getContext()) : blurringMachine;
+        Bitmap fastBlurResult = blurringMachine.blur(bitmap);
         fastBlurResult.recycle();
     }
 

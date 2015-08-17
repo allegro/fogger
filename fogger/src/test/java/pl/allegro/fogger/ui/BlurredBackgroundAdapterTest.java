@@ -27,7 +27,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 
 import pl.allegro.fogger.blur.BlurringImageListener;
-import pl.allegro.fogger.blur.BlurringImageTask;
+import pl.allegro.fogger.blur.BlurringMachine;
 import pl.allegro.fogger.blur.BlurringMachineFactory;
 import pl.allegro.fogger.utils.ImageUtils;
 import pl.allegro.fogger.utils.ScreenShooter;
@@ -148,8 +148,7 @@ public class BlurredBackgroundAdapterTest {
 
     private void mockTask() {
         BlurringMachineFactory taskFactoryMock = mock(BlurringMachineFactory.class);
-        BlurringImageTask taskMock = mock(BlurringImageTask.class);
-        when(taskFactoryMock.create(any(Activity.class), any(BlurringImageListener.class),
-                any(Bitmap.class))).thenReturn(taskMock);
+        BlurringMachine blurringMachine = mock(BlurringMachine.class);
+        when(taskFactoryMock.create(any(Activity.class))).thenReturn(blurringMachine);
     }
 }

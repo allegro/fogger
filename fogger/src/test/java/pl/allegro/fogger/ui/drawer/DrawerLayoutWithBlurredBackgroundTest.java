@@ -24,11 +24,10 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.RuntimeEnvironment;
 
-import pl.allegro.fogger.blur.Blur;
+import pl.allegro.fogger.blur.BlurringMachine;
 
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -40,17 +39,17 @@ public class DrawerLayoutWithBlurredBackgroundTest {
         //given
         DrawerLayoutWithBlurredBackground drawerLayoutWithBlurredBackground
                 = new DrawerLayoutWithBlurredBackground(RuntimeEnvironment.application);
-        Blur mockedBlur = mock(Blur.class);
-        drawerLayoutWithBlurredBackground.blur = mockedBlur;
+        BlurringMachine blurringMachine = mock(BlurringMachine.class);
+        drawerLayoutWithBlurredBackground.blurringMachine = blurringMachine;
         Bitmap bitmap = mock(Bitmap.class);
-        given(mockedBlur.blur(any(Context.class), any(Bitmap.class), anyInt()))
+        given(blurringMachine.blur(any(Bitmap.class)))
             .willReturn(bitmap);
 
         //when
         drawerLayoutWithBlurredBackground.onAttachedToWindow();
 
         //then
-        verify(drawerLayoutWithBlurredBackground.blur)
-                .blur(any(Context.class), any(Bitmap.class), anyInt());
+        verify(drawerLayoutWithBlurredBackground.blurringMachine)
+                .blur(any(Bitmap.class));
     }
 }
