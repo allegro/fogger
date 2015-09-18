@@ -25,9 +25,9 @@ import android.util.Log;
 import android.view.View;
 import pl.allegro.fogger.FoggerConfig;
 import pl.allegro.fogger.blur.BlurringImageListener;
-import pl.allegro.fogger.utils.ScreenShooter;
 import pl.allegro.fogger.blur.BlurringMachineFactory;
 import pl.allegro.fogger.utils.ImageUtils;
+import pl.allegro.fogger.utils.ScreenShooter;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func0;
 import rx.schedulers.Schedulers;
@@ -86,8 +86,8 @@ public class BlurredBackgroundAdapter {
     private void blur(Context context, Func0<Bitmap> screenShotProvider) {
         Async.start(screenShotProvider)
                 .subscribeOn(Schedulers.computation())
-                .observeOn(AndroidSchedulers.mainThread())
                 .map(screenShot -> BlurringMachineFactory.create(context).blur(screenShot))
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(blurredBitmap -> onBlurringFinish(blurredBitmap));
     }
 
