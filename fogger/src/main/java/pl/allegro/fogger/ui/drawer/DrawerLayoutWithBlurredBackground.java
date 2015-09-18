@@ -19,10 +19,11 @@ package pl.allegro.fogger.ui.drawer;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.support.annotation.VisibleForTesting;
 import android.support.v4.widget.DrawerLayout;
 import android.util.AttributeSet;
 import android.util.Log;
-import pl.allegro.fogger.FoggerConfig;
+
 import pl.allegro.fogger.R;
 import pl.allegro.fogger.blur.BlurringImageListener;
 import pl.allegro.fogger.blur.BlurringMachine;
@@ -34,7 +35,7 @@ public class DrawerLayoutWithBlurredBackground extends DrawerLayout implements B
     private static final String TAG = DrawerLayoutWithBlurredBackground.class.getName();
     protected static final int PREINIT_BITMAP_SIZE = 300;
 
-    //visible for testing
+    @VisibleForTesting
     BlurringMachine blurringMachine;
     private DrawerBackgroundAdapter drawerBackgroundAdapter;
     private ObligatoryDrawerListener obligatoryDrawerListener;

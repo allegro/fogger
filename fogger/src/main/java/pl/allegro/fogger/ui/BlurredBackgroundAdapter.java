@@ -77,7 +77,7 @@ public class BlurredBackgroundAdapter {
     private synchronized void prepareAdapterToStartBlurringBackgroundProcess() {
         if (state == BlurredBackgroundAdapterState.WORKING) {
             throw new IllegalStateException("BlurredBackgroundAdapter already working, "
-                    + "it can not handle more then one pl.allegro.fogger.pl.blur request.");
+                    + "it can not handle more then one blur request.");
         }
         state = BlurredBackgroundAdapterState.WORKING;
         leaveCurrentBlurredImage();
