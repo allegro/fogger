@@ -26,8 +26,9 @@ import org.mockito.ArgumentMatcher;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 
-import pl.allegro.fogger.blur.BlurringImageTask;
-import pl.allegro.fogger.blur.BlurringImageTaskFactory;
+import pl.allegro.fogger.blur.BlurringImageListener;
+import pl.allegro.fogger.blur.BlurringMachine;
+import pl.allegro.fogger.blur.BlurringMachineFactory;
 import pl.allegro.fogger.utils.ImageUtils;
 import pl.allegro.fogger.utils.ScreenShooter;
 
@@ -47,13 +48,13 @@ public class BlurredBackgroundAdapterTest {
     private BlurredBackgroundAdapter blurredBackgroundAdapter;
     private ScreenShooter screenShooterMock = mock(ScreenShooter.class);
     private ImageUtils imageUtils = mock(ImageUtils.class);
-    private BlurringImageTask.BlurringImageListener listenerMock;
+    private BlurringImageListener listenerMock;
 
     @Before
     public void setUp() {
         blurredBackgroundAdapter
                 = BlurredBackgroundAdapter.getInstance(RuntimeEnvironment.application);
-        listenerMock = mock(BlurringImageTask.BlurringImageListener.class);
+        listenerMock = mock(BlurringImageListener.class);
     }
 
     @Test
@@ -146,9 +147,8 @@ public class BlurredBackgroundAdapterTest {
     }
 
     private void mockTask() {
-        BlurringImageTaskFactory taskFactoryMock = mock(BlurringImageTaskFactory.class);
-        BlurringImageTask taskMock = mock(BlurringImageTask.class);
-        when(taskFactoryMock.create(any(Activity.class), any(BlurringImageTask.BlurringImageListener.class),
-                any(Bitmap.class))).thenReturn(taskMock);
+        BlurringMachineFactory taskFactoryMock = mock(BlurringMachineFactory.class);
+        BlurringMachine blurringMachine = mock(BlurringMachine.class);
+        when(taskFactoryMock.create(any(Activity.class))).thenReturn(blurringMachine);
     }
 }

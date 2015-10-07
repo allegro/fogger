@@ -14,11 +14,15 @@
  * limitations under the License.
  */
 
-package pl.allegro.fogger.utils;
+package pl.allegro.fogger.blur;
 
-public class TaskRunnerImpl implements TaskRunner {
-    @Override
-    public void execute(SafeAsyncTask task) {
-        task.execute();
+import android.content.Context;
+import android.graphics.Bitmap;
+
+public class BlurringMachineFactory {
+
+    public static BlurringMachine create(Context context) {
+        return new RenderscriptBlurringMachine(context);
     }
+
 }

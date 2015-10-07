@@ -19,7 +19,8 @@ package pl.allegro.fogger.ui.drawer;
 import android.app.Application;
 import android.content.Context;
 import android.view.View;
-import pl.allegro.fogger.blur.BlurringImageTask;
+
+import pl.allegro.fogger.blur.BlurringImageListener;
 import pl.allegro.fogger.ui.BlurredBackgroundAdapter;
 
 public class DrawerBackgroundAdapter {
@@ -28,7 +29,7 @@ public class DrawerBackgroundAdapter {
 
     private Context context;
     private View rootView;
-    private BlurringImageTask.BlurringImageListener blurringImageListener;
+    private BlurringImageListener blurringImageListener;
     private DrawerBackgroundView drawerBackgroundView;
     private String viewToBeBlurredWhenDrawerOpenTag;
 
@@ -39,7 +40,7 @@ public class DrawerBackgroundAdapter {
     }
 
     public synchronized void init(View rootView,
-                     BlurringImageTask.BlurringImageListener blurringImageListener,
+                     BlurringImageListener blurringImageListener,
                      String viewTag) {
         this.rootView = rootView;
         this.blurringImageListener = blurringImageListener;

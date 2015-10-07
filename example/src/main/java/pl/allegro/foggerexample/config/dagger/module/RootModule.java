@@ -17,9 +17,6 @@
 package pl.allegro.foggerexample.config.dagger.module;
 
 import dagger.Module;
-import dagger.Provides;
-import pl.allegro.fogger.utils.TaskRunner;
-import pl.allegro.fogger.utils.TaskRunnerImpl;
 import pl.allegro.foggerexample.config.FoggerExampleApplication;
 import pl.allegro.foggerexample.config.application.ApplicationRunConfiguration;
 import pl.allegro.foggerexample.ui.ComponentsActivity;
@@ -32,7 +29,6 @@ import pl.allegro.foggerexample.utils.Ln;
     },
     injects = {
             FoggerExampleApplication.class,
-            TaskRunner.class,
             ApplicationRunConfiguration.class,
             RootModule.class,
             ComponentsActivity.class,
@@ -45,10 +41,5 @@ import pl.allegro.foggerexample.utils.Ln;
     complete = false
 )
 public class RootModule {
-
-    @Provides
-    TaskRunner provideTaskRunner() {
-        return new TaskRunnerImpl();
-    }
 
 }

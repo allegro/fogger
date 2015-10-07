@@ -28,10 +28,10 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import pl.allegro.fogger.FoggerConfig;
 import pl.allegro.fogger.R;
-import pl.allegro.fogger.blur.BlurringImageTask;
+import pl.allegro.fogger.blur.BlurringImageListener;
 import pl.allegro.fogger.ui.BlurredBackgroundAdapter;
 
-public class DialogWithBlurredBackgroundLauncher implements BlurringImageTask.BlurringImageListener {
+public class DialogWithBlurredBackgroundLauncher implements BlurringImageListener {
 
     private static final String TAG = DialogWithBlurredBackgroundLauncher.class.getName();
     private static final float FADE_IN_ANIMATION_END_VALUE = 1.0f;

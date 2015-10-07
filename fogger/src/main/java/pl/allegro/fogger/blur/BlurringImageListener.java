@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-package pl.allegro.fogger.utils;
+package pl.allegro.fogger.blur;
 
-public interface TaskRunner {
+import android.graphics.Bitmap;
 
-    void execute(SafeAsyncTask task);
+public interface BlurringImageListener {
+    void onBlurringFinish(Bitmap blurredImage);
 }

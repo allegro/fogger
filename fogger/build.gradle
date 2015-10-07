@@ -30,6 +30,7 @@ android {
     }
 
     lintOptions {
+        checkReleaseBuilds false
         abortOnError false
     }
 
@@ -58,15 +59,18 @@ apply from: "${rootDir}/gradle/fixTestJavaResourcesMissing.gradle"
 
 
 dependencies {
-    compile 'com.android.support:support-v4:19.0.1'
+    compile 'com.android.support:support-v4:22.2.0'
+    compile 'com.android.support:support-annotations:22.2.0'
     compile 'org.apache.commons:commons-lang3:3.3.2'
+    compile 'io.reactivex:rxandroid:0.25.0'
+    compile 'io.reactivex:rxjava-async-util:0.21.0'
     testCompile 'com.android.support:support-v8:19.0.1'
     testCompile 'org.mockito:mockito-all:1.9.5'
     testCompile 'org.hamcrest:hamcrest-integration:1.1'
     testCompile 'org.hamcrest:hamcrest-core:1.1'
     testCompile 'org.hamcrest:hamcrest-library:1.1'
-    testCompile 'org.robolectric:robolectric:3.0-rc3'
-    testCompile 'org.robolectric:shadows-support-v4:3.0-rc3'
+    testCompile 'org.robolectric:robolectric:3.0'
+    testCompile 'org.robolectric:shadows-support-v4:3.0'
     testCompile ('com.squareup:fest-android:1.0.8') {
         exclude(module: 'support-v4')
     }

@@ -20,21 +20,24 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.support.annotation.VisibleForTesting;
 import android.util.Log;
 import android.view.View;
 import pl.allegro.fogger.FoggerConfig;
-import pl.allegro.fogger.utils.ScreenShooter;
-import pl.allegro.fogger.utils.TaskRunnerImpl;
-import pl.allegro.fogger.blur.BlurringImageTask;
-import pl.allegro.fogger.blur.BlurringImageTaskFactory;
+import pl.allegro.fogger.blur.BlurringImageListener;
+import pl.allegro.fogger.blur.BlurringMachineFactory;
 import pl.allegro.fogger.utils.ImageUtils;
-import pl.allegro.fogger.utils.TaskRunner;
+import pl.allegro.fogger.utils.ScreenShooter;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func0;
+import rx.schedulers.Schedulers;
+import rx.util.async.Async;
 
-public class BlurredBackgroundAdapter implements BlurringImageTask.BlurringImageListener {
+public class BlurredBackgroundAdapter {
 
     private static final String TAG = BlurredBackgroundAdapter.class.getName();
 
-    protected static enum BlurredBackgroundAdapterState {
+    protected enum BlurredBackgroundAdapterState {
         WORKING,
         RESETTED,
         IDLE,
@@ -45,11 +48,11 @@ public class BlurredBackgroundAdapter implements BlurringImageTask.BlurringImage
 
     protected static String internalFilesDirPath;
     protected ImageUtils imageUtils;
-    protected BlurringImageTaskFactory blurringImageTaskFactory;
+    protected BlurringMachineFactory blurringMachineFactory;
     protected ScreenShooter screenShooter;
 
     protected BlurredBackgroundAdapterState state = BlurredBackgroundAdapterState.IDLE;
-    private BlurringImageTask.BlurringImageListener blurringImageListener;
+    private BlurringImageListener blurringImageListener;
     private Bitmap blurredImage;
 
     public static synchronized BlurredBackgroundAdapter getInstance(Application application) {
@@ -62,24 +65,39 @@ public class BlurredBackgroundAdapter implements BlurringImageTask.BlurringImage
 
     private BlurredBackgroundAdapter() {
         imageUtils = new ImageUtils();
-        blurringImageTaskFactory = new BlurringImageTaskFactory();
+        blurringMachineFactory = new BlurringMachineFactory();
         screenShooter = new ScreenShooter();
     }
 
     public synchronized void prepareBlurredBackgroundForActivity(Activity activity) {
         prepareAdapterToStartBlurringBackgroundProcess();
-        Bitmap appScreenshot = screenShooter.createScreenShot(activity);
-        runBlurringTask(activity, appScreenshot);
+        blur(activity, () -> screenShooter.createScreenShot(activity));
+    }
+
+    private synchronized void prepareAdapterToStartBlurringBackgroundProcess() {
+        if (state == BlurredBackgroundAdapterState.WORKING) {
+            throw new IllegalStateException("BlurredBackgroundAdapter already working, "
+                    + "it can not handle more then one blur request.");
+        }
+        state = BlurredBackgroundAdapterState.WORKING;
+        leaveCurrentBlurredImage();
+    }
+
+    private void blur(Context context, Func0<Bitmap> screenShotProvider) {
+        Async.start(screenShotProvider)
+                .subscribeOn(Schedulers.computation())
+                .map(screenShot -> BlurringMachineFactory.create(context).blur(screenShot))
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(blurredBitmap -> onBlurringFinish(blurredBitmap));
     }
 
     public synchronized void prepareBlurredBackgroundForView(Context context, View viewToBlur) {
         prepareAdapterToStartBlurringBackgroundProcess();
-        Bitmap appScreenshot = screenShooter.createScreenShot(viewToBlur);
-        runBlurringTask(context, appScreenshot);
+        blur(context, () -> screenShooter.createScreenShot(viewToBlur));
     }
 
-    @Override
-    public synchronized void onBlurringFinish(Bitmap blurredImage) {
+    @VisibleForTesting
+    protected synchronized void onBlurringFinish(Bitmap blurredImage) {
         if (state == BlurredBackgroundAdapterState.RESETTED) {
             Log.i(TAG, "BlurringAdapter was reseted, so I recycle created bitmap and reset BlurringAdapterState.");
             blurredImage.recycle();
@@ -98,7 +116,14 @@ public class BlurredBackgroundAdapter implements BlurringImageTask.BlurringImage
         state = BlurredBackgroundAdapterState.RESETTED;
     }
 
-    public synchronized void resetBlurringListener(BlurringImageTask.BlurringImageListener listener) {
+    private void leaveCurrentBlurredImage() {
+        if (blurredImage != null) {
+            blurredImage.recycle();
+            blurredImage = null;
+        }
+    }
+
+    public synchronized void resetBlurringListener(BlurringImageListener listener) {
         if (state == BlurredBackgroundAdapterState.WORKING) {
             blurringImageListener = listener;
         } else if (state == BlurredBackgroundAdapterState.READY && listener != null && blurredImage != null) {
@@ -110,28 +135,6 @@ public class BlurredBackgroundAdapter implements BlurringImageTask.BlurringImage
             blurredImage = imageUtils.createBitmapFromFile(internalFilesDirPath
                                                             + FoggerConfig.BLURRED_SCREENSHOT_FILE_NAME);
             listener.onBlurringFinish(blurredImage);
-        }
-    }
-
-    private synchronized void prepareAdapterToStartBlurringBackgroundProcess() {
-        if (state == BlurredBackgroundAdapterState.WORKING) {
-            throw new IllegalStateException("BlurredBackgroundAdapter already working, "
-                    + "it can not handle more then one pl.allegro.fogger.pl.blur request.");
-        }
-        state = BlurredBackgroundAdapterState.WORKING;
-        leaveCurrentBlurredImage();
-    }
-
-    private void runBlurringTask(Context activity, Bitmap appScreenshot) {
-        BlurringImageTask blurringImageTask = blurringImageTaskFactory.create(activity, this, appScreenshot);
-        TaskRunner taskRunner = new TaskRunnerImpl();
-        taskRunner.execute(blurringImageTask);
-    }
-
-    private void leaveCurrentBlurredImage() {
-        if (blurredImage != null) {
-            blurredImage.recycle();
-            blurredImage = null;
         }
     }
 }

@@ -26,9 +26,9 @@ import android.support.v8.renderscript.ScriptIntrinsicBlur;
 import android.util.Log;
 
 
-public class Blur {
+public class RenderscriptBlurringMachine extends BlurringMachine {
 
-    private static final String TAG = Blur.class.getName();
+    private static final String TAG = RenderscriptBlurringMachine.class.getName();
 
     static {
         try {
@@ -42,7 +42,12 @@ public class Blur {
         }
     }
 
-    public Bitmap fastblur(Context context, Bitmap bitmapToBlur, int radius) {
+    public RenderscriptBlurringMachine(Context context) {
+        super(context);
+    }
+
+    @Override
+    protected Bitmap blur(Context context, Bitmap bitmapToBlur, int radius) {
         Log.i(TAG, "Current build version sdk " + Build.VERSION.SDK_INT);
         Bitmap bitmap = bitmapToBlur.copy(bitmapToBlur.getConfig(), true);
 
