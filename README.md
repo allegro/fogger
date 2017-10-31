@@ -54,40 +54,42 @@ of ```DrawerLayout```
 The second modification is to add tag value 
 
 ```xml
- android:tag="fragmentPlaceholder"
+android:tag="fragmentPlaceholder"
 ``` 
  to main content layout. You could also use string resource id provided with aar
- ```xml
-  android:tag="@string/view_with_drawer_tag"
-  ```
+```xml
+android:tag="@string/view_with_drawer_tag"
+```
    
 The full example:
-   ```xml
-   <?xml version="1.0" encoding="utf-8"?>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
    
-   <pl.allegro.fogger.ui.drawer.DrawerLayoutWithBlurredBackground
-           xmlns:android="http://schemas.android.com/apk/res/android"
-           android:id="@+id/drawer_layout"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent">
-           
-       <FrameLayout
-           android:id="@+id/fragmentPlaceholder"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:tag="@string/view_with_drawer_tag"/>
-   
-       <FrameLayout
-               android:id="@+id/drawer_container"
-               android:tag="@string/drawer_content_view_tag"
-               android:layout_width="240dp"
-               android:layout_height="match_parent"
-               android:layout_gravity="start">
-               <include layout="@layout/settings"/>
-       </FrameLayout>
-       
-   </pl.allegro.fogger.ui.drawer.DrawerLayoutWithBlurredBackground>
-   ```
+<pl.allegro.fogger.ui.drawer.DrawerLayoutWithBlurredBackground
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/fragmentPlaceholder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:tag="@string/view_with_drawer_tag"/>
+
+    <FrameLayout
+        android:id="@+id/drawer_container"
+        android:tag="@string/drawer_content_view_tag"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start">
+
+        <include layout="@layout/settings"/>
+
+    </FrameLayout>
+
+</pl.allegro.fogger.ui.drawer.DrawerLayoutWithBlurredBackground>
+```
 Working example of drawer with dynamically blurred background you could find in the [example app](https://github.com/allegro/fogger/tree/master/example)
 
 Dialog
@@ -99,16 +101,16 @@ All you have to do is use special dialog launcher.
 ```java
 public class MyActivity extends Activity {
 
- ...
+    ...
  
-     public void showDialog() {
-         DialogWithBlurredBackgroundLauncher dialogWithBlurredBackgroundLauncher
-                     = new SimpleDialogWithBlurredBackgroundLauncher(this);
-             Dialog dialog = new Dialog(this);
-             dialog.setTitle(R.string.example_dialog_title);
-             dialogWithBlurredBackgroundLauncher.showDialog(dialog);
-     }
- }
+    public void showDialog() {
+        DialogWithBlurredBackgroundLauncher dialogWithBlurredBackgroundLauncher
+                = new SimpleDialogWithBlurredBackgroundLauncher(this);
+        Dialog dialog = new Dialog(this);
+        dialog.setTitle(R.string.example_dialog_title);
+        dialogWithBlurredBackgroundLauncher.showDialog(dialog);
+    }
+}
 ```
 As you can see, it is just one more line of code compare to dialog window with standard background.
 
@@ -123,15 +125,15 @@ public abstract class ActivityWithContextMenu extends Activity {
 
 then you must implements one required abstract method
 ```java
-    protected abstract int getContextMenuResId(View view);
+protected abstract int getContextMenuResId(View view);
 ```
 
 The method must provide resource id form context menu to show eg.
 ```java
-    @Override
-    protected int getContextMenuResId(View view) {
-        return R.menu.context_menu;
-    }
+@Override
+protected int getContextMenuResId(View view) {
+    return R.menu.context_menu;
+}
 ```
 The rest of context menu flow is unchanged, so you have to register context menu on some View and listen click event with Androids method
 ```java
